@@ -17,24 +17,6 @@ Future<List<Album>> fetchAlbum() async {
   }
 }
 
-// Future<Album> createAlbum(String title) async {
-//   final response = await http.post(
-//     Uri.parse('https://jsonplaceholder.typicode.com/albums'),
-//     headers: <String, String>{
-//       'Content-Type': 'application/json; charset=UTF-8',
-//     },
-//     body: jsonEncode(<String, String>{
-//       'title': title,
-//     }),
-//   );
-
-//   if (response.statusCode == 201) {
-//     return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
-//   } else {
-//     throw Exception('Failed to create album.');
-//   }
-// }
-
 Future<Album> createAlbum(String title) async {
   final response = await http.post(
     Uri.parse('https://jsonplaceholder.typicode.com/albums'),
@@ -63,11 +45,7 @@ Future<Album> createAlbum(String title) async {
 
 // ... (Previous code remains unchanged)
 
-
-
 // ... (Remaining code remains unchanged)
-
-
 
 // Future<Album> deleteAlbum(String id) async {
 //   final http.Response response = await http.delete(
@@ -149,21 +127,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> deleteAlbum(int albumId,) async {
-  // Check if the album with the specified ID exists in the futureAlbum list
-  if (futureAlbum != null) {
-    setState(() {
-      // Remove the album with the specified ID from the list
-      futureAlbum = futureAlbum.then((albums) {
-        albums.removeWhere((album) => album.id == albumId);
-        return albums;
-      });
-    });
-    print("Deleted the ID numbered $albumId");
-  } else {
-    throw Exception('Failed to delete album.');
-  }
-}
+    Future<void> deleteAlbum(
+      int albumId,
+    ) async {
+      // Check if the album with the specified ID exists in the futureAlbum list
+      if (futureAlbum != null) {
+        setState(() {
+          // Remove the album with the specified ID from the list
+          futureAlbum = futureAlbum.then((albums) {
+            albums.removeWhere((album) => album.id == albumId);
+            return albums;
+          });
+        });
+        print("Deleted the ID numbered $albumId");
+      } else {
+        throw Exception('Failed to delete album.');
+      }
+    }
+
     _uploadDialog() async {
       print('hello');
       showDialog(
@@ -197,19 +178,20 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       );
     }
-   
-  void handleDeleteAction(int albumId) async {
-    try {
-      await deleteAlbum(albumId.toString());
-      setState(() {
-        // Remove the deleted album from the list
-        futureAlbum = fetchAlbum();
-      });
-      print("Deleted the ID numbered $albumId");
-    } catch (e) {
-      print("Failed to delete the album with ID $albumId: $e");
+
+    void handleDeleteAction(int albumId) async {
+      try {
+        await deleteAlbum(albumId.toString());
+        setState(() {
+          // Remove the deleted album from the list
+          futureAlbum = fetchAlbum();
+        });
+        print("Deleted the ID numbered $albumId");
+      } catch (e) {
+        print("Failed to delete the album with ID $albumId: $e");
+      }
     }
-  }
+
     _deleteDialog() {
       showDialog(
         context: context,
@@ -462,6 +444,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-
