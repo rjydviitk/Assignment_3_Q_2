@@ -128,14 +128,17 @@ class _MyAppState extends State<MyApp> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Delete Album'),
-          content: Text('Are you sure you want to delete this album?'),
+          title: Text('Delete ID'),
+          content: Text('Are you sure you want to delete this ID?'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel'),
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: Color.fromARGB(255, 2, 65, 172)),
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -148,7 +151,7 @@ class _MyAppState extends State<MyApp> {
               },
               child: Text(
                 'Delete',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: Color.fromARGB(255, 2, 65, 172)),
               ),
             ),
           ],
@@ -160,8 +163,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Album Details',
-      theme: ThemeData.light(),
+      title: 'Flutter Networking App',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 2, 11, 248)),
+      ),
       home: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -170,7 +177,7 @@ class _MyAppState extends State<MyApp> {
           child: const Icon(Icons.add),
         ),
         appBar: AppBar(
-          title: const Text('Album Details'),
+          title: const Text('ID Details'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -189,7 +196,7 @@ class _MyAppState extends State<MyApp> {
                           height: 150.0,
                           margin: const EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
-                            color: Colors.deepPurple,
+                            color: Color.fromARGB(255, 79, 85, 252),
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                           child: Padding(
@@ -205,7 +212,8 @@ class _MyAppState extends State<MyApp> {
                                     Text(
                                       'ID: ${album.id}',
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color:
+                                            Color.fromARGB(255, 253, 171, 171),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18.0,
                                       ),
@@ -219,7 +227,8 @@ class _MyAppState extends State<MyApp> {
                                       },
                                       icon: Icon(
                                         Icons.delete,
-                                        color: Colors.white,
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                       ),
                                     ),
                                   ],
@@ -228,7 +237,8 @@ class _MyAppState extends State<MyApp> {
                                 Text(
                                   album.title,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: const Color.fromARGB(
+                                        255, 253, 171, 171),
                                     fontSize: 16.0,
                                   ),
                                 ),
@@ -275,8 +285,8 @@ class _MyAppState extends State<MyApp> {
                           Container(
                             width: 120.0,
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 27, 208, 48),
-                              borderRadius: BorderRadius.circular(15.0),
+                              color: Color.fromARGB(255, 9, 172, 205),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
