@@ -1,6 +1,6 @@
 {
-    "name": "flutter_networking_app",
-    "short_name": "flutter_networking_app",
+    "name": "networkapp",
+    "short_name": "networkapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

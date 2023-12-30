@@ -1,4 +1,4 @@
-package com.example.flutter_networking_app
+package com.example.networkapp
 
 import io.flutter.embedding.android.FlutterActivity
 
